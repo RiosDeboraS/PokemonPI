@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-//const { Pokemon } = require("../db.js");
+
 
 const getPokemonById = async (id) => {
 
