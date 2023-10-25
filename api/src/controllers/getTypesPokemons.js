@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Type } = require('../db'); // Asegúrate de importar el modelo Type correspondiente a tu base de datos
+const { Type } = require('../db'); 
 
 const getTypes = async () => {
   // Verifica si la base de datos está vacía

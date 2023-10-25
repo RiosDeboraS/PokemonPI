@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 let BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 
 const getPokemons = async () => {
@@ -18,6 +17,9 @@ const getPokemons = async () => {
       const response = await axios.get(pokemon.url);
       const data = response.data;
 
+      // Obtener los tipos del Pokémon
+      const types = data.types.map((typeData) => typeData.type.name);
+
       return {
         id: data.id,
         name: data.name,
@@ -26,6 +28,8 @@ const getPokemons = async () => {
         defense: data.stats.find((stat) => stat.stat.name === "defense").base_stat,
         height: data.height,
         weight: data.weight,
+        life: data.stats[0].base_stat,
+        types: data.types,
       };
     });
 
