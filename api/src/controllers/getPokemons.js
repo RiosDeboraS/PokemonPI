@@ -1,41 +1,59 @@
 const axios = require('axios');
+const { Pokemon, Type } = require('../db');
 
-let BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+// Definimos la URL base de la API
+let BASE_URL = "https://pokeapi.co/api/v2/pokemon/?limit=50";
 
 const getPokemons = async () => {
-  const allPokemons = [];
+  // Obtenemos los Pokémon de la base de datos local, incluyendo los tipos asociados.
+  const dbPokemons = await Pokemon.findAll({ include: { model: Type } });
 
-  while (allPokemons.length < 50) {
-    const response = await axios.get(BASE_URL);
-    allPokemons.push(...response.data.results);
-    BASE_URL = response.data.next;
-  }
+  // Mapeamos los datos de la base de datos a un nuevo formato.
+  const newPokemons = dbPokemons.map((poke) => {
+    return {
+      id: poke.id,
+      name: poke.name,
+      image: poke.image,
+      attack: poke.attack,
+      defense: poke.defense,
+      height: poke.height,
+      weight: poke.weight,
+      life: poke.life,
+      types: poke.Types.map((types) => types.name),
+    };
+  });
 
-  const pokemonPromises = allPokemons
-    .slice(0, 50)
-    .map(async (pokemon) => {
-      const response = await axios.get(pokemon.url);
-      const data = response.data;
+  // Realizamos una solicitud a la API externa para obtener datos de Pokémon.
+  const solicitPokemons = await axios.get(BASE_URL);
 
-      // Obtener los tipos del Pokémon
-      const types = data.types.map((typeData) => typeData.type.name);
+  // Obtenemos los resultados de la API.
+  const response = solicitPokemons.data.results;
 
-      return {
-        id: data.id,
-        name: data.name,
-        image: data.sprites.front_default,
-        attack: data.stats.find((stat) => stat.stat.name === "attack").base_stat,
-        defense: data.stats.find((stat) => stat.stat.name === "defense").base_stat,
-        height: data.height,
-        weight: data.weight,
-        life: data.stats[0].base_stat,
-        types: data.types,
-      };
-    });
+  // Mapeamos los datos de la API externa a un nuevo formato.
+  const apiPokemons = response.map(async (pokemon) => {
+    const apiData = await axios.get(pokemon.url);
+    const data = apiData.data;
+    const mapData = {
+      id: data.id,
+      name: data.name,
+      image: data.sprites.front_default,
+      attack: data.stats[1]["base_stat"],
+      defense: data.stats[2]["base_stat"],
+      height: data.height,
+      weight: data.weight,
+      life: data.stats[0]["base_stat"],
+      types: data.types.map((type) => type.type.name),
+    };
+    return mapData;
+  });
 
-  const pokemonData = await Promise.all(pokemonPromises);
+  // Esperamos a que se completen todas las promesas de la API externa.
+  const pokedata = await Promise.all(apiPokemons);
 
-  return pokemonData;
+  // Combinamos los datos de la base de datos local y la API externa.
+  const totalData = newPokemons.concat(pokedata);
+
+  return totalData;
 };
 
 module.exports = getPokemons;
