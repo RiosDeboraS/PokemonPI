@@ -1,6 +1,7 @@
 import {Home, Detail, Form, Landing} from "./views"
 import {Routes, Route, useLocation} from "react-router-dom"
 import NavBar from "./components/nav/NavBar";
+import SearchResults from "./components/searchBar/SearchBarResults";
 
 function App() {
 
@@ -18,9 +19,9 @@ function App() {
       {pathname !== "/" &&  <NavBar />}
 <Routes>
            <Route exact path="/" element={<Landing />} />
-           <Route exact path="/home" element={<Home />} />
-           <Route exact path="/detail" element={<Detail />} />
-           <Route exact path="/form" element={<Form />} />
+           <Route path="/home" element={<Home />} />
+           <Route path="/detail/:id" element={<Detail />} />
+           <Route path="/form" element={<Form />} />
 </Routes>
 
 

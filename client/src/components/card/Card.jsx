@@ -1,15 +1,22 @@
-import style from "./card.module.css"
+// Card.js
+import React from 'react';
+import style from './card.module.css';
+import { Link } from 'react-router-dom';
 
-const Card = ({name, types, image, id}) => {
-    return(
-        <div className={style.card}>
-        <p>id:{id}</p>
-        <p>name: {name}</p>
-        <img src={image}></img>
-        <p>types: {types}</p>
-       
-        </div>
-    )
+
+const Card = ({ name, types, image, id,  }) => {
+
+
+  return (
+    <div className={style.card}>
+       <Link to={`/detail/${id}`} key={id}>
+      <img src={image} alt={name} />
+      <p>id: {id}</p>
+      <p>name: {name}</p>
+      <p>types: {types}</p>
+      </Link>
+    </div>
+  );
 };
 
 export default Card;

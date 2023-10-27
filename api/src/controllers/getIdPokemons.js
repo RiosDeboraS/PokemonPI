@@ -22,6 +22,7 @@ const getPokemonById = async (uuid) => {
 
   // Mapear los tipos de la API y obtener los tipos de la base de datos en un solo paso.
   const types = await Promise.all(data.types.map(async (typeData) => {
+    
     const typeName = typeData.type.name;
     const dbType = await Type.findOne({ where: { name: typeName } });
     return dbType ? dbType.displayName : typeName;

@@ -1,9 +1,16 @@
-const Landing = () => {
-    return(
-        <div>
-            <p>este es landing</p>
-        </div>
-    )
+
+import { Link } from 'react-router-dom';
+const  Landing = () =>  {
+  
+
+  return (
+    <div>
+      <h1>Landing Page</h1>
+      <Link to='/home'>
+        <button >START</button>
+      </Link>
+    </div>
+  );
 }
 
 export default Landing;
