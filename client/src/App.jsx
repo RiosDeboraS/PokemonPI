@@ -1,19 +1,15 @@
 import {Home, Detail, Form, Landing} from "./views"
 import {Routes, Route, useLocation} from "react-router-dom"
 import NavBar from "./components/nav/NavBar";
-import SearchResults from "./components/searchBar/SearchBarResults";
+
+
+
 
 function App() {
 
   const{pathname}= useLocation();
 
-
-
-
-
-
-
-  return (
+return (
     <div>
       
       {pathname !== "/" &&  <NavBar />}
@@ -22,6 +18,7 @@ function App() {
            <Route path="/home" element={<Home />} />
            <Route path="/detail/:id" element={<Detail />} />
            <Route path="/form" element={<Form />} />
+         
 </Routes>
 
 

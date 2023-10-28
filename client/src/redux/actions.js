@@ -1,4 +1,4 @@
-import { GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME} from "./actions-types";
+import { GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, POST_POKEMONS} from "./actions-types";
 import axios from "axios";
 
 export const get_all_pokemons = () => {
@@ -31,5 +31,28 @@ export const get_by_id = (id) => {
          
 };
 };
+
+export const postPokemonData = (pokemonData) => {
+    return async (dispatch) => {
+      
+        const response = await axios.post("http://localhost:3001/pokemons", pokemonData);
+        const newPokemon = response.data;
+        dispatch({ type: POST_POKEMONS, payload: newPokemon });
+     
+      };
+    };
+  
+  export const get_types = () => {
+    return async (dispatch) => {
+     
+        const response = await axios.post("http://localhost:3001/type");
+        const getTypes= response.data;
+        dispatch({ type: GET_TYPES, payload: getTypes });
+    };
+  };
+
+
+
+
 
 

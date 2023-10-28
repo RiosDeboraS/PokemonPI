@@ -2,8 +2,10 @@ import Card from '../card/Card';
 import style from './cardsContainer.module.css';
 
 const CardsConteiner = ({ pokemons }) => {
-  // Comprueba si los pokemons son un array o un objeto individual
-  const pokemonList = Array.isArray(pokemons) ? pokemons : [pokemons];
+
+  const pokemonList = Array.isArray(pokemons) ? [...pokemons] : [pokemons];
+
+
 
   return (
     <div className={style.conteiner}>
