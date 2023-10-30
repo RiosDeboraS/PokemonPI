@@ -9,9 +9,9 @@ const handlerType = require('../handlers/handlerGetType');
 
 
 const router = Router();
+router.post('/create', handlerPost );
 router.get('/name', handlersName)
 router.get('/pokemons/:id', handlerById);
-router.post('/pokemons', handlerPost );
 router.get('/type', handlerType);
 router.get('/pokemons', handlerGetPokemons);
 

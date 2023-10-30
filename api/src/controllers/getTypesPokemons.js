@@ -10,12 +10,14 @@ const getTypes = async () => {
     const response = await axios.get('https://pokeapi.co/api/v2/type');
     const typesApi = response.data.results;
 
-    // Almacena los tipos en la base de datos uno por uno
     const typesInsert = typesApi.map(async (typeApi) => {
-      const type = await Type.create({ name: typeApi.name });
-      return type;
+      const typeExists = await Type.findOne({ where: { name: typeApi.name } }); // Corregido aquí
+      if (!typeExists) {
+        const type = await Type.create({ name: typeApi.name });
+        return type;
+      }
+      return typeExists; 
     });
-
     // Espera a que se completen todas las inserciones
     const insertedTypes = await Promise.all(typesInsert);
 

@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     }, {
-      timestamps: false, // Opciones del modelo: desactiva los timestamps created_at y updated_at
+      timestamps: false, 
       freezeTableName: true,
     });
     

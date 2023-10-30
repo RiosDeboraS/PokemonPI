@@ -1,6 +1,6 @@
 const { Pokemon, Type } = require('../db');
 
-const createPokemon = async (name, image, life, speed, attack, defense, height, weight, types) => {
+const createPokemon = async (name, image, life, speed, attack, defense, height, weight, types ) => {
   const response = await Pokemon.create({  
     name,
     image,
@@ -10,7 +10,7 @@ const createPokemon = async (name, image, life, speed, attack, defense, height, 
     weight,
     life,
     speed,
-    types
+    
   });
 
   types.map((async(temp)=>{

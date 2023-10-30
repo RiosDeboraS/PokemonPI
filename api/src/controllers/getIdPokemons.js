@@ -21,31 +21,31 @@ const getPokemonById = async (uuid) => {
   const data = response.data;
 
   // Mapear los tipos de la API y obtener los tipos de la base de datos en un solo paso.
-  const types = await Promise.all(data.types.map(async (typeData) => {
-    
-    const typeName = typeData.type.name;
-    const dbType = await Type.findOne({ where: { name: typeName } });
-    return dbType ? dbType.displayName : typeName;
-  }));
+const types = await Promise.all(data.types.map(async (typeData) => {
+  const typeName = typeData.type.name;
+  const dbType = await Type.findOne({ where: { name: typeName } });
+  return dbType ? dbType.displayName : typeName;
+}));
 
-  // Crear un objeto 'dataPokemon' con datos específicos del Pokémon encontrado en la API.
-  const dataPokemon = {
-    id: data.id,
-    name: data.name,
-    image: data.sprites.front_default,
-    attack: data.stats[1].base_stat,
-    defense: data.stats[2].base_stat,
-    height: data.height,
-    weight: data.weight,
-    life: data.stats[0].base_stat,
-    types: data.types,
-  };
+// Crear un objeto 'dataPokemon' con datos específicos del Pokémon encontrado en la API.
+const dataPokemon = {
+  id: data.id,
+  name: data.name,
+  image: data.sprites.front_default,
+  attack: data.stats[1].base_stat,
+  defense: data.stats[2].base_stat,
+  speed: data.stats[5].base_stat,
+  height: data.height,
+  weight: data.weight,
+  life: data.stats[0].base_stat,
+  types: types, // Asigna el arreglo 'types' a 'dataPokemon.types'
+};
 
-  return dataPokemon;
+return dataPokemon;
 };
 
 module.exports = getPokemonById;
 
 
 
-module.exports = getPokemonById;
+
