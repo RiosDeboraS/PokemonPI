@@ -27,12 +27,13 @@ const Detail = () => {
             <div>
            
                 <h3>Id: {detail?.id}</h3>
-                <h3>Name: {detail?.life}</h3>
+                <h3>life: {detail?.life}</h3>
                 <h3>Attack: {detail?.attack}</h3>
                 <h3>Defense: {detail?.defense}</h3>
                 <h3>Speed: {detail?.speed}</h3>
                 <h3>Height: {detail?.height}</h3>
                 <h3>Weight: {detail?.weight}</h3>
+                <h3>types: {detail?.types}</h3>
             </div>
         </div>
     );

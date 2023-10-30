@@ -33,23 +33,29 @@ export const get_by_id = (id) => {
 };
 
 export const postPokemonData = (pokemonData) => {
-    return async (dispatch) => {
-      
-        const response = await axios.post("http://localhost:3001/pokemons", pokemonData);
+    return async (dispatch) =>  {
+      try {
+        const response = await axios.post('http://localhost:3001/create', pokemonData);
         const newPokemon = response.data;
-        dispatch({ type: POST_POKEMONS, payload: newPokemon });
+      dispatch({ type: POST_POKEMONS, payload: newPokemon });
      
-      };
+      
+      } catch (error) {
+        alert(error.message)
+        
+      }
+     
     };
+  };
   
   export const get_types = () => {
     return async (dispatch) => {
-     
-        const response = await axios.post("http://localhost:3001/type");
+      const response = await axios.get("http://localhost:3001/type");
         const getTypes= response.data;
         dispatch({ type: GET_TYPES, payload: getTypes });
     };
   };
+ 
 
 
 

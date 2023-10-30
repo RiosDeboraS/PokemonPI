@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_types, postPokemonData} from '../../redux/actions';
-
+import {  get_types,  postPokemonData } from '../../redux/actions';
 
 const Form = () => {
     const dispatch = useDispatch();
-    const types = useSelector(state => state.type);
-
-    
+    const types = useSelector(state => state.types);
 
     const [pokemonData, setPokemonData] = useState({
         name: '',
@@ -26,23 +23,25 @@ const Form = () => {
     }, [dispatch])
 
     const handleChange = (e) => {
-        setPokemonData({
-            ...pokemonData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleTypeChange = (e) => {
-        setPokemonData({
-            ...pokemonData,
-            types: Array.from(e.target.selectedOptions, option => option.value)
-        });
-    };
-
+        if (e.target.name === 'types') {
+            let selectedTypes = [...pokemonData.types]; 
+            selectedTypes.push(e.target.value); 
+            setPokemonData({
+                ...pokemonData,
+                [e.target.name]: selectedTypes 
+            });
+        } else {
+            setPokemonData({
+                ...pokemonData,
+                [e.target.name]: e.target.value
+            });
+        }
+    }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(postPokemonData(pokemonData));
-    };
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -54,12 +53,14 @@ const Form = () => {
             <input type="number" name="speed" placeholder="Velocidad" onChange={handleChange} />
             <input type="number" name="height" placeholder="Altura" onChange={handleChange} />
             <input type="number" name="weight" placeholder="Peso" onChange={handleChange} />
-            <select multiple={true} value={pokemonData.types} onChange={handleTypeChange}>
-                {types.map((type, index) => (
-                    <option key={index} value={type}>{type}</option>
-                ))}
-            </select>
-            <button type="submit">Crear Pokémon</button>
+            <select name="types" multiple onChange={handleChange}>
+        {types.map(type => (
+          <option key={type.id} value={type.name}>
+            {type.name}
+          </option>
+        ))}
+      </select>
+            <button type='submit'>Crear Pokemon</button>
         </form>
     );
 };

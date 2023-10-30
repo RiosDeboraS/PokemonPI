@@ -8,7 +8,8 @@ import {GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, POST_POKEMONS} from
 const initialState ={
   pokemons: [],
   pokemonsid: [],
-  type: []
+  types: [],
+  newPokemons:[]
   
   
 }
@@ -22,9 +23,9 @@ case GET_BY_NAME:
 case GET_BY_ID:
   return {...state, pokemonsid: actions.payload};
 case POST_POKEMONS:
-  return {...state, pokemons: actions.payload}
+ return {...state, newPokemons: actions.payload}
   case GET_TYPES:
-  return {...state, type: actions.payload}
+  return {...state, types: actions.payload}
 default: {
     return{...state}
 };
