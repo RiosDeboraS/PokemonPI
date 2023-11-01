@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, POST_POKEMONS } from "./actions-types";
+import { FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
 
 export const get_all_pokemons = () => {
  return async (dispatch) => {
@@ -19,7 +19,7 @@ export const get_by_name = (name) => {
         const pokemons= apiData.data;
         dispatch({type: GET_BY_NAME, payload: pokemons})
          
-};
+}; 
 };
 
 export const get_by_id = (id) => {
@@ -75,6 +75,24 @@ export const createPokemon = (data) =>{
   };
  
 
+  export const filter_type = (name) => {
+    return{ type: FILTER_TYPE, payload: name} 
+    
+  }
+
+
+export const filter_origin = (value) => {
+    return{ type: FILTER_ORIGIN, payload: value} 
+    
+  }
+
+  export const order_Alf= (order) =>{
+    return { type: ORDER_ALF, payload: order}
+}
+
+export const order_Attack = (order) =>{
+    return{ type: ORDER_ATTACK, payload: order }
+}
 
 
 

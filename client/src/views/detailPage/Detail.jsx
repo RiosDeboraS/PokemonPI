@@ -14,9 +14,7 @@ const Detail = () => {
 
     dispatch(get_by_id(id))
  
-        
-          
-        }, [id])
+    }, [id])
 
 
    

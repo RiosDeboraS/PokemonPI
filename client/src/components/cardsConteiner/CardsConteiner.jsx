@@ -3,13 +3,9 @@ import style from './cardsContainer.module.css';
 
 const CardsConteiner = ({ pokemons }) => {
 
-  const pokemonList = Array.isArray(pokemons) ? [...pokemons] : [pokemons];
-
-
-
-  return (
+return (
     <div className={style.conteiner}>
-      {pokemonList.map((pokemon,) => (
+      {pokemons.map((pokemon) => (
         <Card
           key={pokemon.id}
           id={pokemon.id}
