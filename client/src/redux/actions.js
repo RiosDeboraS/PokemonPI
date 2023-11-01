@@ -1,5 +1,6 @@
-import { GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, POST_POKEMONS} from "./actions-types";
+
 import axios from "axios";
+import { GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, POST_POKEMONS } from "./actions-types";
 
 export const get_all_pokemons = () => {
  return async (dispatch) => {
@@ -15,7 +16,6 @@ export const get_all_pokemons = () => {
 export const get_by_name = (name) => {
     return async (dispatch) => {
         const apiData = await axios.get(`http://localhost:3001/name?name=${name}`);
-        
         const pokemons= apiData.data;
         dispatch({type: GET_BY_NAME, payload: pokemons})
          
@@ -32,22 +32,40 @@ export const get_by_id = (id) => {
 };
 };
 
-export const postPokemonData = (pokemonData) => {
-    return async (dispatch) =>  {
+export const createPokemon = (data) =>{
+  console.log({data})
+  return async (dispatch) => {
       try {
-        const response = await axios.post('http://localhost:3001/create', pokemonData);
-        const newPokemon = response.data;
-      dispatch({ type: POST_POKEMONS, payload: newPokemon });
-     
-      
+          const response = await axios.post('http://localhost:3001/create', data)
+          console.log(response.data);
+          alert('ya esta creado')
+          dispatch ({
+              type:POST_POKEMONS,
+              payload: response.data,
+          });
       } catch (error) {
-        alert(error.message)
-        
+          console.log(error);
+          alert(error.response.data.error)
+          
       }
-     
-    };
-  };
+  }
+}
   
+/*export function postPokemon(payload) {
+  return (dispatch) => {
+    axios
+      .post('http://localhost:3001/create', payload)
+      .then((res) => res.data)
+      .then((pokemon) => {
+        return pokemon;
+      })
+      .catch((error) => console.log(error));
+  };
+}*/
+
+
+
+
   export const get_types = () => {
     return async (dispatch) => {
       const response = await axios.get("http://localhost:3001/type");

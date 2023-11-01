@@ -1,6 +1,6 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  get_types,  postPokemonData } from '../../redux/actions';
+import { createPokemon, get_types } from '../../redux/actions';
 
 const Form = () => {
     const dispatch = useDispatch();
@@ -37,10 +37,37 @@ const Form = () => {
             });
         }
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(postPokemonData(pokemonData));
+        
+        // Validations
+        if (!/^.{4,}$/.test(pokemonData.name)) {
+            alert('El nombre debe contener al menos 4 letras');
+            return;
+        }
+        
+        if (!/^.{1,250}$/.test(pokemonData.image)) {
+            alert('La URL de la imagen debe tener menos de 250 caracteres');
+            return;
+        }
+        
+        if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.life) ||
+            !/^[1-9][0-9]?$|^100$/.test(pokemonData.attack) ||
+            !/^[1-9][0-9]?$|^100$/.test(pokemonData.defense) ||
+            !/^[1-9][0-9]?$|^100$/.test(pokemonData.speed) ||
+            !/^[1-9][0-9]?$|^100$/.test(pokemonData.height) ||
+            !/^[1-9][0-9]?$|^100$/.test(pokemonData.weight)) {
+            alert('Los campos numéricos deben tener un número entre 1 y 100');
+            return;
+        }
+        
+        if (pokemonData.types.length === 0) {
+            alert('Debes elegir al menos un tipo');
+            return;
+        }
+
+        dispatch(createPokemon(pokemonData));
     }
 
     return (
@@ -54,12 +81,12 @@ const Form = () => {
             <input type="number" name="height" placeholder="Altura" onChange={handleChange} />
             <input type="number" name="weight" placeholder="Peso" onChange={handleChange} />
             <select name="types" multiple onChange={handleChange}>
-        {types.map(type => (
-          <option key={type.id} value={type.name}>
-            {type.name}
-          </option>
-        ))}
-      </select>
+                {types.map(type => (
+                    <option key={type.id} value={type.name}>
+                        {type.name}
+                    </option>
+                ))}
+            </select>
             <button type='submit'>Crear Pokemon</button>
         </form>
     );

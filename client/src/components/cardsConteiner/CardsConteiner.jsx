@@ -9,7 +9,7 @@ const CardsConteiner = ({ pokemons }) => {
 
   return (
     <div className={style.conteiner}>
-      {pokemonList.map((pokemon) => (
+      {pokemonList.map((pokemon,) => (
         <Card
           key={pokemon.id}
           id={pokemon.id}

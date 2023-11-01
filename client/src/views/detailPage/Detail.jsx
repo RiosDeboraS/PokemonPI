@@ -13,9 +13,9 @@ const Detail = () => {
     useEffect(() => {
 
     dispatch(get_by_id(id))
-        return () => {
+ 
         
-          }
+          
         }, [id])
 
 
