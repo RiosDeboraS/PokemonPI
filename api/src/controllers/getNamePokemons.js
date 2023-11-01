@@ -11,7 +11,7 @@ const getNamePokemons = async (name) => {
         {
             model: Type,
             attributes: ["name"],
-            through: { attributes: [] } // Evita traer los datos de la tabla intermedia si existe
+             // Evita traer los datos de la tabla intermedia si existe
         }]
 })
 //Responde con el pokemon
@@ -20,11 +20,11 @@ if (pokemon) {
     //Busca en la api el pokemon por name que llega por query
 } else {
     const { id, sprites, stats, height, weight, types } = (await axios.get(`${BASE_URL}/${name}`)).data
+    console.log({types})
     const pokemon = {
         id: id,
         name: name,
-        //image: sprites.other.home.front_shiny,
-        // image: sprites.front_shiny,
+      
         image: sprites.other['official-artwork'].front_default,
         life: stats[0].base_stat,
         attack: stats[1].base_stat,

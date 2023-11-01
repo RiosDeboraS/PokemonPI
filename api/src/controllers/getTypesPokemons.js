@@ -1,31 +1,23 @@
 const axios = require('axios');
-const { Type } = require('../db'); 
+const { Type } = require('../db');
 
-const getTypes = async () => {
-  // Verifica si la base de datos está vacía
-  const typesFromDB = await Type.findAll();
+const getType = async () => {
+    const typeApi = await axios.get(`https://pokeapi.co/api/v2/type`);
+    const result = typeApi.data;
 
-  if (typesFromDB.length === 0) {
-    // Si la base de datos está vacía, obtén los tipos de la API
-    const response = await axios.get('https://pokeapi.co/api/v2/type');
-    const typesApi = response.data.results;
+    for (const typeData of result.results) {//itera sobre cada elemento en el arreglo result.results
+        //Para cada iteración del bucle, typeData tomará el valor del elemento actual del arreglo
+        // y puedes acceder a sus propiedades.
+        const typeName = typeData.name;//se utiliza para acceder al nombre de cada tipo dentro del bucle.
 
-    const typesInsert = typesApi.map(async (typeApi) => {
-      const typeExists = await Type.findOne({ where: { name: typeApi.name } }); // Corregido aquí
-      if (!typeExists) {
-        const type = await Type.create({ name: typeApi.name });
-        return type;
-      }
-      return typeExists; 
-    });
-    // Espera a que se completen todas las inserciones
-    const insertedTypes = await Promise.all(typesInsert);
+        const existingType = await Type.findAll({ where: { name: typeName } });
 
-    return insertedTypes;
-  }
+        if (existingType.length === 0) {
+            // Si no existe, crea un nuevo registro en la base de datos
+            await Type.create({ name: typeName });
+        }
+    }
 
-  // Si la base de datos no está vacía, simplemente devuelve los tipos de la base de datos
-  return typesFromDB;
-};
-
-module.exports = getTypes;
+    return await Type.findAll();
+}
+module.exports = getType;

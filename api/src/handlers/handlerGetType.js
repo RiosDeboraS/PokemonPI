@@ -1,14 +1,11 @@
-const getTypes = require('../controllers/getTypesPokemons');
+const getType = require('../controllers/getTypesPokemons');
 
-
-const handlerType= async(req, res)=>{
+const getTypeHandlers = async (req, res) => {
     try {
-        const type = await getTypes();
-        res.status(200).json(type)
-        
+        const tipe = await getType();
+        res.status(200).json(tipe)
     } catch (error) {
         res.status(404).json({error: error.message})
     }
-};
-
-module.exports = handlerType;
+}
+module.exports = getTypeHandlers;

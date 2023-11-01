@@ -1,57 +1,52 @@
 
-const { DataTypes, UUIDV4 } = require("sequelize");
+const { DataTypes } = require('sequelize');
+// Exportamos una funcion que define el modelo
+// Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
- sequelize.define('pokemon', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-    Id: {
-      type: DataTypes.UUID,
-      defaultValue: UUIDV4,
-      allowNull: false,
-      PrimaryKey: true,
+  sequelize.define(
+    'pokemon',
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
+        primaryKey: true
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+        defaultValue: ''
+      },
+      life: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      }, 
+      attack: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+      },
+      defense: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+      },
+      height: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      weight: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
-    
-    image: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    
-   life: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    attack: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-    },
-    defense: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-    },
-    speed: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    height: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    weight: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-  }, {
-    timestamps: false, // Opciones del modelo: desactiva los timestamps created_at y updated_at
-    freezeTableName: true,
-  });
-
+    { timestamps: false }
+  );
 };
-
 
     
  

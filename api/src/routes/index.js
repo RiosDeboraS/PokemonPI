@@ -5,14 +5,14 @@ const handlerGetPokemons=require('../handlers/handlerGetPokemons')
 const handlerPost = require('../handlers/handlerPost');
 const handlerById = require('../handlers/handlersById');
 const handlersName = require('../handlers/handlerGetName');
-const handlerType = require('../handlers/handlerGetType');
+const getTypeHandlers = require('../handlers/handlerGetType');
 
 
 const router = Router();
 router.post('/create', handlerPost );
 router.get('/name', handlersName)
 router.get('/pokemons/:id', handlerById);
-router.get('/type', handlerType);
+router.get('/type', getTypeHandlers);
 router.get('/pokemons', handlerGetPokemons);
 
 
