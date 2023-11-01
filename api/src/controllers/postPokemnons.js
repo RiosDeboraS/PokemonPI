@@ -13,8 +13,7 @@ const createPokemon = async (name, image, life, speed, attack, defense, height, 
     speed,
   });
 
-  // No es necesario dividir 'types' si ya es un array
-  // Si 'types' es un array, puedes usarlo directamente sin split
+ 
 
   await Promise.all(types.map(async (temp) => {
     // Busca un Tipo en la base de datos con el nombre proporcionado
