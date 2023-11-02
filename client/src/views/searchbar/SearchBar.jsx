@@ -1,8 +1,8 @@
 import { useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { get_by_name } from '../../redux/actions';
+import {  get_by_name } from '../../redux/actions';
 import { useState } from 'react';
-
+import style from './search.module.css'
 
 
 const SearchBar = () => {
@@ -23,16 +23,17 @@ const SearchBar = () => {
       navigate('/home');
       setName('');
   };
+
+  
   
 
     return (
         <div >
             <div >
 
-                <input  name="myInput" type='search' value={name} onChange={handleChange}  />
-
-                <button onClick={() => { onSearch(name); setName('') }} >SEARCH</button>
-
+                <input name="myInput" type='search' value={name} onChange={handleChange}  />
+               <button className={style.SearchButton} onClick={() => { onSearch(name); setName('') }} >SEARCH</button>
+               
             </div>
         </div>
     )

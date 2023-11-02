@@ -1,7 +1,7 @@
 import {Home, Detail, Form, Landing} from "./views"
 import {Routes, Route, useLocation} from "react-router-dom"
 import NavBar from "./components/nav/NavBar";
-
+import style from './app.module.css'
 
 
 
@@ -10,7 +10,7 @@ function App() {
   const{pathname}= useLocation();
 
 return (
-    <div>
+    <div style={style.root}>
       
       {pathname !== "/" &&  <NavBar />}
 <Routes>

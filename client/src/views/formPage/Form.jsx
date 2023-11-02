@@ -54,19 +54,21 @@ console.log({pokemonData})
             <input type="text" name="name" placeholder="Nombre" onChange={handleChange} />
             <p >{errors.name}</p>
             <input type="text" name="image" placeholder="Imagen URL" onChange={handleChange} />
+            {pokemonData.image && (
+           <img src={pokemonData.image} alt="Vista previa de la imagen" />)}
             <p>{errors.image}</p>
             <input type="number" name="life" placeholder="Vida" onChange={handleChange} />
-            
+            <p>{errors.life}</p>
             <input type="number" name="attack" placeholder="Ataque" onChange={handleChange} />
-            
+            <p>{errors.attack}</p>
             <input type="number" name="defense" placeholder="Defensa" onChange={handleChange} />
-            
+            <p>{errors.defense}</p>
             <input type="number" name="speed" placeholder="Velocidad" onChange={handleChange} />
-            
+            <p>{errors.speed}</p>
             <input type="number" name="height" placeholder="Altura" onChange={handleChange} />
-            
+            <p>{errors.height}</p>
             <input type="number" name="weight" placeholder="Peso" onChange={handleChange} />
-            
+            <p>{errors.weight}</p>
             <select name="types" multiple onChange={handleChange}>
           
                 {types.map(type => (
@@ -75,7 +77,8 @@ console.log({pokemonData})
                     </option>
                 ))}
             </select>
-            <button type='submit'>Crear Pokemon</button>
+            {errors.types && <p>{errors.types}</p>}
+            <button type='submit'>Capturar</button>
         </form>
     );
 };

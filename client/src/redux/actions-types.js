@@ -7,3 +7,4 @@ export const FILTER_TYPE = 'FILTER_TYPE';
 export const ORDER_ALF = 'ORDER_ALF';
 export const ORDER_ATTACK = 'ORDER_ATTACK';
 export const FILTER_ORIGIN ='FILTER_ORIGIN';
+export const CLEAR_RESULTS = 'CLEAR_RESULTS'

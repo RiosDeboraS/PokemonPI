@@ -4,6 +4,8 @@ import { get_by_id } from "../../redux/actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+
+
 const Detail = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -13,8 +15,8 @@ const Detail = () => {
     useEffect(() => {
 
     dispatch(get_by_id(id))
- 
-    }, [id])
+  
+    }, [dispatch,id])
 
 
    

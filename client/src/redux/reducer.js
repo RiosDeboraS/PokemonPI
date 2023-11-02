@@ -1,4 +1,4 @@
-import { FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, POST_POKEMONS } from "./actions-types";
+import { CLEAR_RESULTS, FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
 
 
 
@@ -53,8 +53,36 @@ return {
   ...state,
   pokemons: [...filterOrigin]
 }
+case ORDER_ATTACK:
+  let orderedByAttack = [...state.pokemons];
+  
+  if (actions.payload === 'asc') {
+    orderedByAttack.sort((a, b) => a.attack - b.attack);
+  } else if (actions.payload === 'desc') {
+    orderedByAttack.sort((a, b) => b.attack - a.attack);
+  }
+  
+  return {
+    ...state,
+    pokemons: orderedByAttack,
+  };
+    case ORDER_ALF:
+      let orderedAlphabetically = [...state.pokemons];
+  
+      if (actions.payload === 'asc') {
+        orderedAlphabetically.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (actions.payload === 'desc') {
+        orderedAlphabetically.sort((a, b) => b.name.localeCompare(a.name));
+      }
+      
+      return {
+        ...state,
+        pokemons: orderedAlphabetically,
+      };
 
-
+      case CLEAR_RESULTS: 
+      console.log("Limpiando resultados de búsqueda");
+      return{...state, pokemons: [] }
 
 
 

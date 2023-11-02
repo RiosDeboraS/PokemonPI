@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
+import { CLEAR_RESULTS, FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
 
 export const get_all_pokemons = () => {
  return async (dispatch) => {
@@ -38,14 +38,14 @@ export const createPokemon = (data) =>{
       try {
           const response = await axios.post('http://localhost:3001/create', data)
           console.log(response.data);
-          alert('ya esta creado')
+          alert('Capturado con exito')
           dispatch ({
               type:POST_POKEMONS,
               payload: response.data,
           });
       } catch (error) {
           console.log(error);
-          alert(error.response.data.error)
+          alert('No se puedo capturar')
           
       }
   }
@@ -94,6 +94,9 @@ export const order_Attack = (order) =>{
     return{ type: ORDER_ATTACK, payload: order }
 }
 
+export const clear_results = ()=> {
+  return {type: CLEAR_RESULTS}
+}
 
 
 

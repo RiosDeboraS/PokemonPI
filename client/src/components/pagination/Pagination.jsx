@@ -1,4 +1,4 @@
-
+import style from './pagination.module.css'
 import React from 'react';
 
 const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) => {
@@ -17,7 +17,7 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) =
   };
 
   return (
-    <div>
+    <div className={style.div}>
       <button onClick={prevHandler}>back</button>
       <button onClick={nextHandler}>next</button>
     </div>

@@ -12,19 +12,36 @@ if (!/^.{1,250}$/.test(pokemonData.image)) {
     
 }
 
-/*if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.life) ||
-    !/^[1-9][0-9]?$|^100$/.test(pokemonData.attack) ||
-    !/^[1-9][0-9]?$|^100$/.test(pokemonData.defense) ||
-    !/^[1-9][0-9]?$|^100$/.test(pokemonData.speed) ||
-    !/^[1-9][0-9]?$|^100$/.test(pokemonData.height) ||
-    !/^[1-9][0-9]?$|^100$/.test(pokemonData.weight)) {
-      errors ='Los campos numéricos deben tener un número entre 1 y 100';
-    }
+if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.life)) {
+  errors.life = 'El campo "Vida" debe ser un número entre 1 y 100';
+}
 
-if (pokemonData.types.length === 0) {
-   errors.types = ('Debes elegir al menos un tipo');
-    
-}*/
+if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.attack)) {
+  errors.attack = 'El campo "Ataque" debe ser un número entre 1 y 100';
+}
+
+if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.defense)) {
+  errors.defense = 'El campo "Defensa" debe ser un número entre 1 y 100';
+}
+
+if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.speed)) {
+  errors.speed = 'El campo "Velocidad" debe ser un número entre 1 y 100';
+}
+
+if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.height)) {
+  errors.height = 'El campo "Altura" debe ser un número entre 1 y 100';
+}
+
+if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.weight)) {
+  errors.weight = 'El campo "Peso" debe ser un número entre 1 y 100';
+}
+
+if (pokemonData.types.length !== 2) {
+  errors.types = 'Debes elegir exactamente 2 tipos';
+}
+
+
+
 return errors
 }
 

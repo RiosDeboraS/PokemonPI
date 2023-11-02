@@ -1,8 +1,19 @@
 .conteiner{
     flex-wrap: wrap;
     flex-direction: row;
-    border: black solid 1 px;
-    border-radius: 15px;
+    background-color: rgba(229, 207, 247, 0.534);
+  
     gap: 1em;
+    width: 200%;
+    height: 500%;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; 
+    height: 100vh;
 
 }

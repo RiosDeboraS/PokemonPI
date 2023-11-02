@@ -7,10 +7,10 @@ import SearchBar from "../../views/searchbar/SearchBar";
 const NavBar = () => {
     return (
         <div className={style.nav}>
+             <button className={style.button}><Link to="/home">Home</Link></button>
+            <div className={style.Search}><SearchBar/></div>
+           <button className={style.button}><Link to="/form">Form</Link></button>
             
-            <SearchBar/>
-            <Link to="/home">Home</Link>
-            <Link to="/form">Form</Link>
             
 
         </div>

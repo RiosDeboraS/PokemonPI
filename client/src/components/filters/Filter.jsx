@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { filter_origin, filter_type, get_types, order_Alf, order_Attack } from '../../redux/actions';
-
+import style from './filters.module.css'
 
 const Filter = () => {
 
@@ -39,8 +39,11 @@ const Filter = () => {
 
 
     return(
-        <div>
-             
+        <div className={style.div}>
+            <button onClick={() => handlerOrder({target: {value: 'asc'}})}>A - Z</button>
+             <button onClick={() => handlerOrder({target: {value: 'desc'}})}>Z - A</button>
+             <button onClick={() => handlerOrder({target: {value: 'asc'}})}>Attack MaxMin</button>
+             <button onClick={() => handlerOrder({target: {value: 'desc'}})}>Attack MinMax</button>
             <select onChange={handlerfilterOrigin}>
                 <option value= "api">Pokedex</option>
                 <option value= "db"> Mis Capturados</option>
