@@ -19,6 +19,7 @@ const getPokemons = async () => {
       height: poke.height,
       weight: poke.weight,
       life: poke.life,
+      speed: poke.speed,
       types: poke.Types.map((types) => types.name),
     };
   });
@@ -36,9 +37,10 @@ const getPokemons = async () => {
     const mapData = {
       id: data.id,
       name: data.name,
-      image: data.sprites.front_default,
+      image: data.sprites.other['official-artwork'].front_default,
       attack: data.stats[1]["base_stat"],
       defense: data.stats[2]["base_stat"],
+      speed: data.stats[5].base_stat,
       height: data.height,
       weight: data.weight,
       life: data.stats[0]["base_stat"],
