@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { CLEAR_RESULTS, FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
+import { CLEAR_DETAIL, CLEAR_RESULTS, FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
 
 export const get_all_pokemons = () => {
  return async (dispatch) => {
@@ -96,6 +96,10 @@ export const order_Attack = (order) =>{
 
 export const clear_results = ()=> {
   return {type: CLEAR_RESULTS}
+}
+
+export const clear_detail = () => {
+  return {type: CLEAR_DETAIL}
 }
 
 

@@ -1,5 +1,5 @@
 .button {
-   
+    font-family: 'Great Vibes', cursive;
     margin-left: 1000px;
    border-color: rgb(240, 145, 240);
     background-color: rgba(174, 93, 250, 0.418);
@@ -8,6 +8,7 @@
     width: 150px;
     height: 100px;
     border-radius: 10px;
+    color: rgb(100, 5, 100);
 }
 
 .button:hover {

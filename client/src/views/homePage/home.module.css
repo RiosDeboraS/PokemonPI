@@ -1,6 +1,6 @@
 .loading-container {
    
-   
+  font-family: 'Great Vibes', cursive;
     transform: translate(-50%, -50%);
     animation: spin 1s infinite linear;
   }

@@ -1,4 +1,4 @@
-import { CLEAR_RESULTS, FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
+import { CLEAR_DETAIL, CLEAR_RESULTS, FILTER_ORIGIN, FILTER_TYPE, GET_ALL_POKEMONS, GET_BY_ID, GET_BY_NAME, GET_TYPES, ORDER_ALF, ORDER_ATTACK, POST_POKEMONS } from "./actions-types";
 
 
 
@@ -84,7 +84,9 @@ case ORDER_ATTACK:
       console.log("Limpiando resultados de búsqueda");
       return{...state, pokemons: [] }
 
-
+ case CLEAR_DETAIL: 
+ console.log("Limpiando detail");
+ return{...state, pokemonsid:[]}
 
 default: { 
     return{...state}
