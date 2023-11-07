@@ -1,0 +1,72 @@
+.form {
+  font-family: 'Great Vibes', cursive;
+    position: absolute;
+    right: 5%;
+    left: 30%;
+    top: 20%;
+    background-color: rgb(241, 198, 241); /* Fondo trasparente */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px 10px  #f716e4;
+    width: 450px; 
+    text-align: center;
+    
+  }
+
+  .form label {
+    -webkit-text-stroke: 1px #c6f716; /* Ancho y color del contorno */
+    
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    display: block;
+    text-align: left;
+    color: black; /* Color de texto */
+    margin-bottom: 10px;
+  }
+  
+  .form input[type=number],
+  .form input[type=text] {
+    font-family: 'Great Vibes', cursive;
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    background-color: rgba(200, 200, 200, 0.5);; /* Fondo oscuro para los campos de entrada */
+    color: black;
+    border-radius: 5px;
+  }
+  
+  .form button {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    background-color: #83268f;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+   }
+  
+  .form button:hover {
+    background-color: #d329e985;
+    border-color: rgb(247, 22, 228);
+    box-shadow: 5px 5px 10px  #f716d9;
+  }
+
+
+  .button{
+    font-family: 'Great Vibes', cursive;
+  border-color: rgb(240, 145, 240);
+   background-color: rgba(174, 93, 250, 0.418);
+   font-size: 15px;
+   border-radius: 10px;
+   color: rgb(100, 5, 100);
+   ;
+
+}
+
+.button:hover{
+    box-shadow: 0 0 10px rgb(230, 32, 230);
+}

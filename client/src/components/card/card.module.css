@@ -1,0 +1,23 @@
+.card {
+   
+    margin: 50px;
+    background-color: rgba(174, 93, 250, 0.418);
+    border-radius: 50px;
+    flex-wrap: wrap;
+    padding: 20px;
+    box-shadow: 0 0 0 10px transparent; /* Agregamos una sombra transparente para los bordes */
+    gap: 10px;
+    cursor: pointer;
+    width: 500px;
+    height: auto;
+   
+  }
+  
+  .card:hover {
+    box-shadow: 0 0 20px rgb(231, 45, 231); 
+  }
+
+
+
+
+
