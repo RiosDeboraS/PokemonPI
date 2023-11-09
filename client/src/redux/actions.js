@@ -15,19 +15,22 @@ export const get_all_pokemons = () => {
 
 export const get_by_name = (name) => {
     return async (dispatch) => {
-        const apiData = await axios.get(`http://localhost:3001/name?name=${name}`);
-        const pokemons= apiData.data;
-        dispatch({type: GET_BY_NAME, payload: pokemons})
-         
+       try {
+           const apiData = await axios.get(`http://localhost:3001/name?name=${name}`);
+           const pokemons= apiData.data;
+          dispatch({type: GET_BY_NAME, payload: pokemons
+          })
+    } catch (error) {  
+      alert('No se encontro pokemon con ese nombre')
+    }
 }; 
 };
 
 export const get_by_id = (id) => {
     return async (dispatch) => {
         const apiData = await axios.get(`http://localhost:3001/pokemons/${id}`);
-        console.log(apiData)
+        
         const pokemons= apiData.data;
-      
         dispatch({type: GET_BY_ID, payload: pokemons})
          
 };
@@ -38,31 +41,21 @@ export const createPokemon = (data) =>{
   return async (dispatch) => {
       try {
           const response = await axios.post('http://localhost:3001/create', data)
-          console.log(response.data);
+          
           alert('Capturado con exito')
           dispatch ({
               type:POST_POKEMONS,
               payload: response.data,
           });
       } catch (error) {
-          console.log(error);
+          
           alert('No se puedo capturar')
           
       }
   }
 }
   
-/*export function postPokemon(payload) {
-  return (dispatch) => {
-    axios
-      .post('http://localhost:3001/create', payload)
-      .then((res) => res.data)
-      .then((pokemon) => {
-        return pokemon;
-      })
-      .catch((error) => console.log(error));
-  };
-}*/
+
 
 
 

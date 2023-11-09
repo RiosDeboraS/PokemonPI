@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2? family= Great+Vibes & family= Pixelify+Sans & display=swap');
 
 :root{
-    background-image: url("C:\Users\riosd\OneDrive\Escritorio\PokemonPI-master\client\src\img\2e7f2679-810e-4ed4-b3a9-d33b50dc72f5.png");
+    background-image: url("C:\Users\riosd\OneDrive\Escritorio\copia\PokemonPI-master\client\src\img\2e7f2679-810e-4ed4-b3a9-d33b50dc72f5.png");
     
     margin: 0%;
     padding: 0px;
@@ -28,7 +28,7 @@ h1{
     font-size: 50px;
     color: rgb(100, 5, 100);
     border-radius: 100px;
-    margin-top: 30%;
+    margin-top: 25%;
     width: 100%;
     margin-left: 100px;
     display: flex;

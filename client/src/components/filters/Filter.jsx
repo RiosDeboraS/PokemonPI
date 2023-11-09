@@ -17,24 +17,32 @@ const Filter = () => {
 
     const handlerFiltersTypes= (event) =>{
         const filterTypes = event.target.value;
+        
         setType(filterTypes);
         dispatch(filter_type(filterTypes));
+        
     }
 
 
     const handlerfilterOrigin = (event)=>{
+       
         const filterOrigin = event.target.value;
         dispatch(filter_origin(filterOrigin))
+        
     }
 
         
     
     const handlerOrder = (event) => {
+       
         dispatch(order_Alf(event.target.value));
+        
     }
 
     const handlerOrderAttack = (event) => {
+       
         dispatch(order_Attack(event.target.value))
+        
     }
 
 

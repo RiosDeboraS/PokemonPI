@@ -3,6 +3,8 @@ import style from './cardsContainer.module.css';
 
 const CardsConteiner = ({ pokemons }) => {
 
+  
+
 return (
     <div className={style.conteiner}>
       {pokemons.map(({id, name, image, types}) => (

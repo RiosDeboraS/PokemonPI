@@ -2,10 +2,10 @@ const validation = (pokemonData)=>{
   const errors = {}
 
   
-  if (!/^.{4,}$/.test(pokemonData.name)) {
-    errors.name = 'El nombre debe contener al menos 4 letras';
-    
+  if (!/^.{4,15}$/.test(pokemonData.name)) {
+    errors.name = 'El nombre debe contener entre 4 y 15 letras';
 }
+
 
 if (!/^.{1,250}$/.test(pokemonData.image)) {
   errors.image ='La URL de la imagen debe tener menos de 250 caracteres';
@@ -23,6 +23,7 @@ if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.attack)) {
 if (!/^[1-9][0-9]?$|^100$/.test(pokemonData.defense)) {
   errors.defense = 'El campo "Defensa" debe ser un número entre 1 y 100';
 }
+
 
 
 

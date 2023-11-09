@@ -14,9 +14,7 @@ const Card = ({ name, types, image, id  }) => {
       <p>id: {id}</p>
       <p>name: {name}</p>
       <p>types:{types}</p>
-
-
-      </Link>
+     </Link>
     </div>
   );
 };

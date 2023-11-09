@@ -8,15 +8,19 @@
     box-shadow: 0 0 0 10px transparent; /* Agregamos una sombra transparente para los bordes */
     gap: 10px;
     cursor: pointer;
-    width: 500px;
-    height: auto;
+    width: 200px;
+    height:300px;
    
   }
   
   .card:hover {
     box-shadow: 0 0 20px rgb(231, 45, 231); 
   }
-
+img{
+  width: 100px;  /* Ancho de la imagen */
+  height: 100px; /* Altura de la imagen */
+  object-fit: cover; /* Esto hará que la imagen cubra todo el espacio disponible, recortándola si es necesario */
+}
 
 
 

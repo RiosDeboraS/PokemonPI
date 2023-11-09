@@ -9,6 +9,8 @@ import style from './Form.module.css'
 const Form = () => {
     const dispatch = useDispatch();
     const types = useSelector(state => state.types);
+
+
     const [errors, setErrors] = useState({})
 
 
@@ -27,6 +29,7 @@ const Form = () => {
     useEffect(() => {
         dispatch(get_types())
     }, [dispatch])
+
 
     const handleChange = (event) => {
         if (event.target.name === 'types') 
@@ -79,7 +82,8 @@ const Form = () => {
                 ))}
             </select>
             {errors.types && <p>{errors.types}</p>}
-            <button type='submit'>Capturar</button>
+           <button type='submit' >Capturar</button>
+         
         </form>
     );
 };
